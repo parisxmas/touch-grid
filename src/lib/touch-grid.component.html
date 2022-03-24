@@ -1,0 +1,41 @@
+<div class="custom-grid">
+    <div class="loading" *ngIf="loading">
+        <!--
+        <mat-spinner color="primary"></mat-spinner>
+        -->
+    </div>
+    <div class="custom-grid-header">
+        <div *ngFor="let column of columns" [style.width]="column.width">{{column.displayName}}</div>
+
+        <div *ngIf="showEditButton" style="width: 40px;"></div>
+        <div *ngIf="showDeleteButton" style="width: 40px;"></div>
+    </div>
+    <div class="custom-grid-content">
+        <div class="custom-grid-item" [style.background]="getRowStyle(row)" *ngFor="let row of data"
+            (click)="rowClicked(row)">
+            <div *ngFor="let column of columns" [style.width]="column.width" [style.text-align]="column.align"
+                (click)="cellClicked(row,column)">
+                {{getData(row,column)}}</div>
+            <div style="width: 40px;" *ngIf="showEditButton">
+                <button type="button" mat-icon-button (click)="edit(row)">
+                    <!--
+                    <mat-icon>edit</mat-icon>
+                    -->
+                </button>
+            </div>
+            <div style="width: 40px;" *ngIf="showDeleteButton">
+                <button type="button" mat-icon-button (click)="remove(row)">
+                    <!--
+                    <mat-icon>delete</mat-icon>
+                    -->
+                </button>
+            </div>
+        </div>
+        <div *ngIf="showPaging">
+            <div *ngIf="itemsCount >0">
+                <div *ngFor="let pagenum of counter(itemsCount) ;let i = index">
+                    <button [style.background]="getButtonColor(i+1)" (click)="pageClick(i+1)">{{i+1}}</button>
+                </div>
+            </div>
+        </div>
+    </div>

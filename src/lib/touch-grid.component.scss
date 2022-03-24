@@ -1,0 +1,96 @@
+.custom-grid {
+    width: 100%;
+    margin-top: 0;
+    height: 100%;
+    position: relative;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    &::-webkit-scrollbar {
+      width: 24px;
+      height: 24px;
+    }
+    &::-webkit-scrollbar-button {
+      width: 0px;
+      height: 0px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #666666;
+      border: 0px none #ffffff;
+      border-radius: 0px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #777;
+    }
+    &::-webkit-scrollbar-thumb:active {
+      background: #3c3c3c;
+    }
+    &::-webkit-scrollbar-track {
+      background: #e7e7e7;
+      border: 0px none #ffffff;
+      border-radius: 0px;
+    }
+  
+    &::-webkit-scrollbar-corner {
+      background: transparent;
+    }
+    .name {
+      width: 66%;
+    }
+    .phone {
+      width: 34%;
+    }
+    .custom-grid-header {
+      display: flex;
+      font-weight: 700;
+      border-bottom: 2px solid gray;
+      padding: 10px;
+      margin: 0;
+      background-color: #e9e9e9;
+      position: sticky;
+      width: calc(100% - 20px);
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 30px;
+      display: flex;
+      align-items: center;
+    }
+    .custom-grid-content {
+      .custom-grid-item {
+        border-bottom: 1px solid gray;
+        padding: 10px;
+        display: flex;
+        transition: 0.25s ease-in-out;
+        color: #333333;
+        cursor: pointer;
+        &:hover {
+          background-color: #e1e1e1;
+          color: #000;
+        }
+        &.active {
+          background-color: #e1e1e1;
+          color: #000;
+        }
+      }
+    }
+    .loading {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      right: 0;
+      left: 0;
+      margin: 0 auto;
+      z-index: 9;
+      top: calc(50% - 60px);
+      border-radius: 100%;
+      ::ng-deep .mat-progress-spinner circle,
+      .mat-spinner circle {
+        stroke: #1a2a4a;
+      }
+    }
+  }
+  
